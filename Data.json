@@ -1,0 +1,27 @@
+[
+    {
+    "id":1,
+    "firstname":"yash",
+    "lastname":"devganiya",
+    "email":"yash@123",
+    "password":"2000",
+    "conpassword":"2000"
+},
+    {
+    "id":2,
+    "firstname":"yash",
+    "lastname":"devganiya",
+    "email":"yash@123",
+    "password":"2000",
+    "conpassword":"2000"
+},
+    {
+    "id":3,
+    "firstname":"yash",
+    "lastname":"devganiya",
+    "email":"yash@123",
+    "password":"2000",
+    "conpassword":"2000"
+}
+
+]
