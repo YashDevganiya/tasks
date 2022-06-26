@@ -1,0 +1,20 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+----------------Function Component-----------------------
+
+ const notify = () => {
+    return toast.success("Company Deleted Successfully!");
+  };
+<div>
+<button
+                    type="submit"
+                    className="btn btn-primary"
+                    onClick={notify}
+                  >
+                    Submit
+                  </button>
+                  <ToastContainer />
+                </div>
+
+                </div>

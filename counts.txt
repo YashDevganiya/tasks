@@ -1,0 +1,191 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { apiURL } from "../../config/config";
+import axios from "axios";
+
+const Total_Count = () => {
+  const [totalCount, setTotalCount] = useState([]);
+  useEffect(() => {
+    CountDetails();
+  }, []);
+
+  const CountDetails = async () => {
+    try {
+      const com_data = await axios.get(`${apiURL}admin/total-count`);
+      const handleData = com_data.data.data;
+      console.log(handleData);
+      setTotalCount(handleData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
+  
+          <>
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="row">
+                    <div className="col-md-6 col-lg-3">
+                      <div className="iq-card iq-card-block iq-card-stretch iq-card-height">
+                        <div className="iq-card-body iq-bg-primary rounded">
+                          <div className="d-flex align-items-center justify-content-between">
+                            <div className="rounded-circle iq-card-icon bg-primary">
+                              <i className="ri-briefcase-4-fill"></i>
+                            </div>
+                            <div className="text-right">
+                              <h2 className="mb-0">
+                                <span className="counter">
+                                  {/* 84 */}
+                                  {totalCount.totalCompanies}
+                                </span>
+                              </h2>
+                              <h5 className="">Companies</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6 col-lg-3">
+                      <div className="iq-card iq-card-block iq-card-stretch iq-card-height">
+                        <div className="iq-card-body iq-bg-warning rounded">
+                          <div className="d-flex align-items-center justify-content-between">
+                            <div className="rounded-circle iq-card-icon bg-warning">
+                              <i className="ri-group-fill"></i>
+                            </div>
+                            <div className="text-right">
+                              <h2 className="mb-0">
+                                <span className="counter">
+                                  {/* 851 */}
+                                  {totalCount.totalPeople}
+                                </span>
+                              </h2>
+                              <h5 className="">People</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6 col-lg-3">
+                      <div className="iq-card iq-card-block iq-card-stretch iq-card-height">
+                        <div className="iq-card-body iq-bg-danger rounded">
+                          <div className="d-flex align-items-center justify-content-between">
+                            <div className="rounded-circle iq-card-icon bg-danger">
+                              <i className="fa fa-bullhorn"></i>
+                            </div>
+                            <div className="text-right">
+                              <h2 className="mb-0">
+                                <span className="counter">
+                                  {/* 8451 */}
+                                  {totalCount.totalDealPosting}
+                                </span>
+                              </h2>
+                              <h5 className="">Deal-Postings</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6 col-lg-3">
+                      <div className="iq-card iq-card-block iq-card-stretch iq-card-height">
+                        <div className="iq-card-body iq-bg-info rounded">
+                          <div className="d-flex align-items-center justify-content-between">
+                            <div className="rounded-circle iq-card-icon bg-info">
+                              <i className="fa fa-wrench"></i>
+                            </div>
+                            <div className="text-right">
+                              <h2 className="mb-0">
+                                <span className="counter">
+                                  {/* 4851 */}
+                                  {totalCount.totalServiceLine}
+                                </span>
+                              </h2>
+                              <h5 className="">Service-Lines</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6 col-lg-3">
+                      <div className="iq-card iq-card-block iq-card-stretch iq-card-height">
+                        <div className="iq-card-body iq-bg-info rounded">
+                          <div className="d-flex align-items-center justify-content-between">
+                            <div className="rounded-circle iq-card-icon bg-info">
+                              <i className="fa fa-money"></i>
+                            </div>
+                            <div className="text-right">
+                              <h2 className="mb-0">
+                                <span className="counter">
+                                  {/* 484 */}
+                                  {totalCount.totalTransaction}
+                                </span>
+                              </h2>
+                              <h5 className="">Transaction</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+ 
+  );
+};
+
+export default Total_Count;
+
+
+
+
+------------------------------------------
+
+
+import React, { Component } from "react";
+import { apiHandler } from "../../apiRequest/apiRequest";
+import { apiURL } from "../../config/config";
+import Total_Count from "../Dashboard/Count";
+
+const Dashboard = () => {
+  //   constructor(props) {
+  //     super(props);
+  //     // this.state = {
+  //     //   dashBoardData: [],
+  //     // };
+  //   }
+
+  //   componentDidMount() {
+  //     this.fetchDashBoardData();
+  //   }
+
+  //   fetchDashBoardData = () => {
+  //     const url = apiURL + "dashboard";
+  //     const requestOptions = {
+  //       method: "GET",
+  //     };
+
+  //     apiHandler(url, requestOptions).then(async (response) => {
+  //       if (response) {
+  //         const getAllDashBoardData = await response.json();
+  //         this.setState({
+  //           dashBoardData: getAllDashBoardData.data,
+  //         });
+  //       }
+  // });
+  // //   };
+
+  return (
+    <>
+      <Total_Count />
+    </>
+  );
+};
+
+export default Dashboard;
+
+
+------------------------------------------
+<Route path={`${match}/`} element={<Dashboard />} />

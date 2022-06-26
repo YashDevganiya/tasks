@@ -1,0 +1,4 @@
+import { Helmet } from "react-helmet";
+
+
+  <Helmet><title>Quals | Home</title></Helmet>
